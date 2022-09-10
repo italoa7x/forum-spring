@@ -1,6 +1,6 @@
-package br.com.forum.forum.models;
+package br.com.forum.models;
 
-import br.com.forum.forum.enuns.StatusTopico;
+import br.com.forum.enuns.StatusTopico;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -27,6 +27,9 @@ public class Topico {
     @OneToMany(mappedBy = "topico")
     private List<Resposta> respostas = new ArrayList<>();
 
+
+    public Topico() {
+    }
 
     public Long getId() {
         return id;

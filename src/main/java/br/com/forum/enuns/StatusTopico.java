@@ -1,4 +1,4 @@
-package br.com.forum.forum.enuns;
+package br.com.forum.enuns;
 
 public enum StatusTopico {
     FECHADO,

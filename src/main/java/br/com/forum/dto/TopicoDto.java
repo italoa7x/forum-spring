@@ -1,6 +1,6 @@
-package br.com.forum.forum.dto;
+package br.com.forum.dto;
 
-import br.com.forum.forum.models.Topico;
+import br.com.forum.models.Topico;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -20,10 +20,19 @@ public class TopicoDto {
         this.mensagem = topico.getMensagem();
     }
 
+    public TopicoDto() {
+    }
+
 
     public List<TopicoDto> toDto(List<Topico> topicos) {
 
         return topicos.stream().map(TopicoDto::new).collect(Collectors.toList());
+    }
+
+    public TopicoDto parseDto(Topico topico) {
+        TopicoDto dto = new TopicoDto(topico);
+
+        return dto;
     }
 
     public Long getId() {

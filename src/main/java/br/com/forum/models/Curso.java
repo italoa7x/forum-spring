@@ -1,4 +1,4 @@
-package br.com.forum.forum.models;
+package br.com.forum.models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,11 +14,6 @@ public class Curso {
     private String nome;
     private String categoria;
 
-    public Curso(String nome, String categoria) {
-        this.nome = nome;
-        this.categoria = categoria;
-
-    }
 
     public Long getId() {
         return id;
