@@ -28,4 +28,11 @@ public class TopicoService {
 
         return this.repository.save(topico);
     }
+
+
+    public Topico findById(Long id) {
+        return this.repository.findById(id).orElseThrow();
+    }
+
+
 }

@@ -1,22 +1,35 @@
 package br.com.forum.controllers.form;
 
+import br.com.forum.models.Curso;
 import br.com.forum.models.Topico;
+import br.com.forum.repository.CursoRepository;
+import org.hibernate.validator.constraints.Length;
+
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 public class TopicoForm {
+
+    @NotNull
+    @NotEmpty
+    @Length(min = 5, message = "O título precisa ter mais de 5 caracteres")
     private String titulo;
+    @NotNull
+    @NotEmpty
+    @Length(min = 10, message = "O tamanho mínimo para a mensagem são de 5 caracteres")
     private String mensagem;
+    @NotNull
+    @NotEmpty
     private String nomeCurso;
 
     public String getTitulo() {
         return titulo;
     }
 
-    public TopicoForm parseTopicoForm(Topico topico) {
-        TopicoForm topicoForm = new TopicoForm();
-        topicoForm.setNomeCurso(topico.getCurso().getNome());
-        topicoForm.setTitulo(topico.getTitulo());
-        topicoForm.setMensagem(topico.getMensagem());
-        return topicoForm;
+    public Topico parseTopicoForm(CursoRepository cursoRepository) {
+        Curso curso = cursoRepository.findByNome(this.nomeCurso);
+
+        return new Topico(this.titulo, this.mensagem, curso);
     }
 
     public void setTitulo(String titulo) {
